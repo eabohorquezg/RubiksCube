@@ -13,7 +13,7 @@ import java.util.Enumeration;
 public class Test {
  
      public static void main(String []args){
-        
+       
         RubiksCube cube = new RubiksCube();
         cube.printArrayCube();
         cube.moveL();
@@ -28,9 +28,9 @@ public class Test {
         RubiksCube rc1 = new RubiksCube();
         rc1.moveL();
         g.makeNode(1L,rc);
-        g.makeNode(2L,rc1);
+//        g.makeNode(2L,rc1);
         g.makeNode(3L,rc);
-        g.makelink(1L, 2L, 0);
+        g.makelink(1L, g.makeNode(2L,rc1), 0);
         g.makelink(1L, 3L, 1);
         g.makelink(2L, 3L, 1);
         System.out.println("Grafo: ");

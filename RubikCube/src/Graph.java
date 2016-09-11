@@ -24,10 +24,11 @@ public class Graph {
  	edges = new ArrayList <Edge>();
     }
  
-    public void makeNode( Long id, RubiksCube cube )
+    public Long makeNode( Long id, RubiksCube cube )
     {
  	ids.add(id);
  	nodes.put(id,new Node(id, cube));
+        return id;
     }
         
     public void makelink( Long initialnode,Long terminalnode,double weight)
@@ -71,6 +72,31 @@ public class Graph {
  	return edges;
     } 
 
+    public void createGraph( Long num_nodes )
+    {
+        Long node = 1L;
+        for(long i = 1; i <= num_nodes; i++) {
+            makelink(i, makeNode(++node,getNode(i).getCube().moveL()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveLprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveB()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveBprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveD()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveDprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveE()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveEprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveF()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveFprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveM()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveMprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveR()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveRprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveS()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveSprime()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveU()), 0);
+            makelink(i, makeNode(++node,getNode(i).getCube().moveUprime()), 0);
+        }
+    }
+    
     public void printGraph(){
         System.out.print("{ ");
         int count;

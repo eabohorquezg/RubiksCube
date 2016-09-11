@@ -12,13 +12,19 @@ import java.util.Enumeration;
  *
  * @author Edwin
  */
-public class Main { 
+public class Main {  
     
     public static void main(String []args){
         
-       int NUM_LEVELS = 15;
-       System.out.println("");
-       
+       long NUM_LEVELS = 2;//15;
+       long NUM_MOV = 18;
+       long NUM_NODES = (long)((Math.pow(NUM_MOV, NUM_LEVELS+1)-1)/(NUM_MOV-1));
+       System.out.println("nodos del grafo : "+NUM_NODES);
+       Graph g = new Graph();
+       g.makeNode(1L, new RubiksCube());//se crea el nodo raiz
+       g.createGraph(NUM_NODES);
+       //g.printGraph();
+       System.out.println("termine");
         
     }
     

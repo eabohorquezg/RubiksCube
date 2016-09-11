@@ -37,7 +37,7 @@ public class RubiksCube
         }
     }
     
-    public void moveL()
+    public RubiksCube moveL() 
     {
         byte v1=cubeArray[0], v2=cubeArray[3], v3=cubeArray[6];
         cubeArray[0] = cubeArray[44];
@@ -52,110 +52,117 @@ public class RubiksCube
         cubeArray[18] = v1;
         cubeArray[21] = v2;
         cubeArray[24] = v3;
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveLprime()
+    public RubiksCube moveLprime()
     { // wow !
+        /*
         this.moveL();
         this.moveL();
         this.moveL();
+        */
+        //completar
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveR()
+    public RubiksCube moveR()
     {
         //completar
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveRprime()
+    public RubiksCube moveRprime()
     {
-        this.moveR();
-        this.moveR();
-        this.moveR();
+        //completar
+        
+        return new RubiksCube(cubeArray);
     }
     
     
-    public void moveU()
+    public RubiksCube moveU()
     {
         
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveUprime()
-    {
-        this.moveU();
-        this.moveU();
-        this.moveU();
-    }
-    
-    public void moveD()
-    {
-    
-    }
-    
-    public void moveDprime()
-    {
-        this.moveD();
-        this.moveD();
-        this.moveD();
-    }
-    
-    public void moveF()
+    public RubiksCube moveUprime()
     {
         
+        
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveFprime()
-    {
-        this.moveF();
-        this.moveF();
-        this.moveF();
-    }
-    
-    public void moveB()
+    public RubiksCube moveD()
     {
         
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveBprime()
-    {
-        this.moveB();
-        this.moveB();
-        this.moveB();
-    }
-    
-    public void moveM()
+    public RubiksCube moveDprime()
     {
         
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveMprime()
-    {
-        this.moveM();
-        this.moveM();
-        this.moveM();
-    }
-    
-    public void moveE()
+    public RubiksCube moveF()
     {
         
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveEprime()
-    {
-        this.moveE();
-        this.moveE();
-        this.moveE();
-    }
-    
-    public void moveS()
+    public RubiksCube moveFprime()
     {
         
+        return new RubiksCube(cubeArray);
     }
     
-    public void moveSprime()
+    public RubiksCube moveB()
     {
-        this.moveS();
-        this.moveS();
-        this.moveS();
+        
+        return new RubiksCube(cubeArray);
+    }
+    
+    public RubiksCube moveBprime()
+    {
+        
+        return new RubiksCube(cubeArray);
+    }
+    
+    public RubiksCube moveM()
+    {
+        
+        return new RubiksCube(cubeArray);
+    }
+    
+    public RubiksCube moveMprime()
+    {
+        
+        return new RubiksCube(cubeArray);
+    }
+    
+    public RubiksCube moveE()
+    {
+        
+        return new RubiksCube(cubeArray);
+    }
+    
+    public RubiksCube moveEprime()
+    {
+        
+        return new RubiksCube(cubeArray);
+    }
+    
+    public RubiksCube moveS()
+    {
+        
+        return new RubiksCube(cubeArray);
+    }
+    
+    public RubiksCube moveSprime()
+    {
+        
+        return new RubiksCube(cubeArray);
     }
     
 }
