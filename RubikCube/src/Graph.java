@@ -1,6 +1,9 @@
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -113,6 +116,64 @@ public class Graph {
             System.out.print("} ");
         }
         System.out.print("}");
+    }
+    
+    public void bfs(Node root)
+    {
+        Queue<Node> queue = new LinkedList<Node>();
+        root.setVisited(true);
+        queue.add(root);
+        while( !queue.isEmpty() )
+        {
+            Node r = (Node)queue.remove(); 
+            System.out.print(r.getId()+" ");
+            for( Link n: r.getLinks() )
+            {
+                Node child = getNode(n.getArrivalnode());
+                if( child.getVisited() == false )
+                {
+                    child.setVisited(true);
+                    queue.add(child);
+                }
+            }
+        }
+    }
+    
+    public void dfsRecursive(Node root)
+    {       
+        System.out.print(root.getId()+" ");
+        root.setVisited(true);
+        for( Link n: root.getLinks() )
+        {
+            Node child = getNode(n.getArrivalnode());
+            if( child.getVisited() == false )
+                dfsRecursive(child);
+        }
+    }
+    
+    public void dfs(Node root)
+    {   
+        Stack stack = new Stack(); 
+        root.setVisited(true);
+        stack.push(root);
+        while( !stack.isEmpty() )
+        {
+            Node r = (Node)stack.pop();    
+            //System.out.print(r.getId()+" ");
+            if( r.getCube().isOrdered() ){
+                System.out.println("lo encontre en "+r.getId());
+                break;
+            }
+            for( Link n: r.getLinks() )
+            {
+                Node child = getNode(n.getArrivalnode());
+                if( child.getVisited() == false )
+                {
+                    child.setVisited(true);
+                    stack.push(child);
+                }
+            }
+        }
     }
     
 }

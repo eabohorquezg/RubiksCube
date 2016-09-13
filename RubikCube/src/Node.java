@@ -52,6 +52,11 @@ public class Node
         return visited;
     }
     
+    public void setVisited( boolean value )
+    {
+        this.visited = value;
+    }
+    
     public void makelink( long id, double weight )
     {
         if ( numlinks == 0 )
@@ -79,18 +84,5 @@ public class Node
         }
  	return -1;
     }
-
-    @Override 
-    public boolean equals(Object o)
-    {   
-        Node node = (Node)o;
-        boolean resp = true;
-        for (int i = 0; i < this.cube.getCubeArray().length; i++)
-        {
-            if( this.cube.getCubeArray()[i] != node.cube.getCubeArray()[i] )
-                return false;
-        }
-        return resp;
-    }    
      
 }

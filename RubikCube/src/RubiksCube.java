@@ -1,3 +1,7 @@
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,7 +11,7 @@
  *
  * @author Edwin
  */
-public class RubiksCube 
+public class RubiksCube
 {
     private byte[] cubeArray;
 
@@ -38,556 +42,561 @@ public class RubiksCube
     }
     
     public RubiksCube moveL() 
-    {
-        byte v1=cubeArray[0], v2=cubeArray[3], v3=cubeArray[6];
-        
-        cubeArray[0] = cubeArray[44];
-        cubeArray[3] = cubeArray[41];
-        cubeArray[6] = cubeArray[38];
-        
-        cubeArray[44] = cubeArray[45];
-        cubeArray[41] = cubeArray[48];
-        cubeArray[38] = cubeArray[51];
-        
-        cubeArray[45] = cubeArray[18];
-        cubeArray[48] = cubeArray[21];
-        cubeArray[51] = cubeArray[24];
-        
-        cubeArray[18] = v1;
-        cubeArray[21] = v2;
-        cubeArray[24] = v3;
-        
-        //NEW CODE <-- Rotate face LEFT
-        v1 = cubeArray[9];
-        cubeArray[9] = cubeArray[15];
-        cubeArray[15] = cubeArray[17];
-        cubeArray[17] = cubeArray[11];
-        cubeArray[11] = v1;
-
-        v1 = cubeArray[10];
-        cubeArray[10] = cubeArray[12];
-        cubeArray[12] = cubeArray[16];
-        cubeArray[16] = cubeArray[14];
-        cubeArray[14] = v1;        
-        return new RubiksCube(cubeArray);
+    {        
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[0], v2=newcubearray[3], v3=newcubearray[6];
+        newcubearray[0] = newcubearray[44];
+        newcubearray[3] = newcubearray[41];
+        newcubearray[6] = newcubearray[38];
+        newcubearray[44] = newcubearray[45];
+        newcubearray[41] = newcubearray[48];
+        newcubearray[38] = newcubearray[51];
+        newcubearray[45] = newcubearray[18];
+        newcubearray[48] = newcubearray[21];
+        newcubearray[51] = newcubearray[24];
+        newcubearray[18] = v1;
+        newcubearray[21] = v2;
+        newcubearray[24] = v3;
+        //Rotate face LEFT
+        v1 = newcubearray[9];
+        newcubearray[9] = newcubearray[15];
+        newcubearray[15] = newcubearray[17];
+        newcubearray[17] = newcubearray[11];
+        newcubearray[11] = v1;
+        v1 = newcubearray[10];
+        newcubearray[10] = newcubearray[12];
+        newcubearray[12] = newcubearray[16];
+        newcubearray[16] = newcubearray[14];
+        newcubearray[14] = v1;  
+        return new RubiksCube(newcubearray); 
     }
     
-    public RubiksCube moveLprime() 
+    public RubiksCube moveLprime()
     { 
-        byte v1=cubeArray[0], v2=cubeArray[3], v3=cubeArray[6];
-        
-        cubeArray[0] = cubeArray[18];
-        cubeArray[3] = cubeArray[21];
-        cubeArray[6] = cubeArray[24];
-        
-        cubeArray[18] = cubeArray[45];
-        cubeArray[21] = cubeArray[48];
-        cubeArray[24] = cubeArray[51];
-        
-        cubeArray[45] = cubeArray[44];
-        cubeArray[48] = cubeArray[41];
-        cubeArray[51] = cubeArray[38];
-        
-        cubeArray[44] = v1;
-        cubeArray[41] = v2;
-        cubeArray[38] = v3;               
-        
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[0], v2=newcubearray[3], v3=newcubearray[6];
+        newcubearray[0] = newcubearray[18];
+        newcubearray[3] = newcubearray[21];
+        newcubearray[6] = newcubearray[24];
+        newcubearray[18] = newcubearray[45];
+        newcubearray[21] = newcubearray[48];
+        newcubearray[24] = newcubearray[51];
+        newcubearray[45] = newcubearray[44];
+        newcubearray[48] = newcubearray[41];
+        newcubearray[51] = newcubearray[38];
+        newcubearray[44] = v1;
+        newcubearray[41] = v2;
+        newcubearray[38] = v3;               
         //NEW CODE <-- Rotate face LEFT
-        v1 = cubeArray[9];
-        cubeArray[9] = cubeArray[11];
-        cubeArray[11] = cubeArray[17];
-        cubeArray[17] = cubeArray[15];
-        cubeArray[15] = v1;
-
-        v1 = cubeArray[10];
-        cubeArray[10] = cubeArray[14];
-        cubeArray[14] = cubeArray[16];
-        cubeArray[16] = cubeArray[12];
-        cubeArray[12] = v1;        
-        return new RubiksCube(cubeArray);
-    }
+        v1 = newcubearray[9];
+        newcubearray[9] = newcubearray[11];
+        newcubearray[11] = newcubearray[17];
+        newcubearray[17] = newcubearray[15];
+        newcubearray[15] = v1;
+        v1 = newcubearray[10];
+        newcubearray[10] = newcubearray[14];
+        newcubearray[14] = newcubearray[16];
+        newcubearray[16] = newcubearray[12];
+        newcubearray[12] = v1;        
+        return new RubiksCube(newcubearray);
+    } 
     
     public RubiksCube moveR()
     {
-        byte v1=cubeArray[2], v2=cubeArray[5], v3=cubeArray[8];
-        
-        cubeArray[2] = cubeArray[20];
-        cubeArray[5] = cubeArray[23];
-        cubeArray[8] = cubeArray[26];
-        
-        cubeArray[20] = cubeArray[47];
-        cubeArray[23] = cubeArray[50];
-        cubeArray[26] = cubeArray[53];
-        
-        cubeArray[47] = cubeArray[42];
-        cubeArray[50] = cubeArray[39];
-        cubeArray[53] = cubeArray[36];
-        
-        cubeArray[42] = v1;
-        cubeArray[39] = v2;
-        cubeArray[36] = v3;               
-        
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[2], v2=newcubearray[5], v3=newcubearray[8];
+        newcubearray[2] = newcubearray[20];
+        newcubearray[5] = newcubearray[23];
+        newcubearray[8] = newcubearray[26];
+        newcubearray[20] = newcubearray[47];
+        newcubearray[23] = newcubearray[50];
+        newcubearray[26] = newcubearray[53];
+        newcubearray[47] = newcubearray[42];
+        newcubearray[50] = newcubearray[39];
+        newcubearray[53] = newcubearray[36];
+        newcubearray[42] = v1;
+        newcubearray[39] = v2;
+        newcubearray[36] = v3;               
         //NEW CODE <-- Rotate face Right
-        v1 = cubeArray[27];
-        cubeArray[27] = cubeArray[33];
-        cubeArray[33] = cubeArray[35];
-        cubeArray[35] = cubeArray[29];
-        cubeArray[29] = v1;
-
-        v1 = cubeArray[28];
-        cubeArray[28] = cubeArray[30];
-        cubeArray[30] = cubeArray[34];
-        cubeArray[34] = cubeArray[32];
-        cubeArray[32] = v1;        
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[27];
+        newcubearray[27] = newcubearray[33];
+        newcubearray[33] = newcubearray[35];
+        newcubearray[35] = newcubearray[29];
+        newcubearray[29] = v1;
+        v1 = newcubearray[28];
+        newcubearray[28] = newcubearray[30];
+        newcubearray[30] = newcubearray[34];
+        newcubearray[34] = newcubearray[32];
+        newcubearray[32] = v1;        
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveRprime()
     {
-        byte v1=cubeArray[2], v2=cubeArray[5], v3=cubeArray[8];
-        
-        cubeArray[2] = cubeArray[42];
-        cubeArray[5] = cubeArray[39];
-        cubeArray[8] = cubeArray[36];
-        
-        cubeArray[42] = cubeArray[47];
-        cubeArray[39] = cubeArray[50];
-        cubeArray[36] = cubeArray[53];
-        
-        cubeArray[47] = cubeArray[20];
-        cubeArray[50] = cubeArray[23];
-        cubeArray[53] = cubeArray[26];
-        
-        cubeArray[20] = v1;
-        cubeArray[23] = v2;
-        cubeArray[26] = v3;         
-        
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[2], v2=newcubearray[5], v3=newcubearray[8];
+        newcubearray[2] = newcubearray[42];
+        newcubearray[5] = newcubearray[39];
+        newcubearray[8] = newcubearray[36];
+        newcubearray[42] = newcubearray[47];
+        newcubearray[39] = newcubearray[50];
+        newcubearray[36] = newcubearray[53];
+        newcubearray[47] = newcubearray[20];
+        newcubearray[50] = newcubearray[23];
+        newcubearray[53] = newcubearray[26];
+        newcubearray[20] = v1;
+        newcubearray[23] = v2;
+        newcubearray[26] = v3;         
         //NEW CODE <-- Rotate face Right
-        v1 = cubeArray[27];
-        cubeArray[27] = cubeArray[29];
-        cubeArray[29] = cubeArray[35];
-        cubeArray[35] = cubeArray[33];
-        cubeArray[33] = v1;
-
-        v1 = cubeArray[28];
-        cubeArray[28] = cubeArray[32];
-        cubeArray[32] = cubeArray[34];
-        cubeArray[34] = cubeArray[30];
-        cubeArray[30] = v1;  
-        
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[27];
+        newcubearray[27] = newcubearray[29];
+        newcubearray[29] = newcubearray[35];
+        newcubearray[35] = newcubearray[33];
+        newcubearray[33] = v1;
+        v1 = newcubearray[28];
+        newcubearray[28] = newcubearray[32];
+        newcubearray[32] = newcubearray[34];
+        newcubearray[34] = newcubearray[30];
+        newcubearray[30] = v1;  
+        return new RubiksCube(newcubearray);
     }
+    
     
     public RubiksCube moveU()
     {
-        byte v1=cubeArray[9], v2=cubeArray[10], v3=cubeArray[11];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[9], v2=newcubearray[10], v3=newcubearray[11];
         
-        cubeArray[9] = cubeArray[18];
-        cubeArray[10] = cubeArray[19];
-        cubeArray[11] = cubeArray[20];
+        newcubearray[9] = newcubearray[18];
+        newcubearray[10] = newcubearray[19];
+        newcubearray[11] = newcubearray[20];
         
-        cubeArray[18] = cubeArray[27];
-        cubeArray[19] = cubeArray[28];
-        cubeArray[20] = cubeArray[29];
+        newcubearray[18] = newcubearray[27];
+        newcubearray[19] = newcubearray[28];
+        newcubearray[20] = newcubearray[29];
         
-        cubeArray[27] = cubeArray[36];
-        cubeArray[28] = cubeArray[37];
-        cubeArray[29] = cubeArray[38];
+        newcubearray[27] = newcubearray[36];
+        newcubearray[28] = newcubearray[37];
+        newcubearray[29] = newcubearray[38];
         
-        cubeArray[36] = v1;
-        cubeArray[37] = v2;
-        cubeArray[38] = v3;         
+        newcubearray[36] = v1;
+        newcubearray[37] = v2;
+        newcubearray[38] = v3;         
         
         //NEW CODE <-- Rotate face UP
-        v1 = cubeArray[0];
-        cubeArray[0] = cubeArray[6];
-        cubeArray[6] = cubeArray[8];
-        cubeArray[8] = cubeArray[2];
-        cubeArray[2] = v1;
+        v1 = newcubearray[0];
+        newcubearray[0] = newcubearray[6];
+        newcubearray[6] = newcubearray[8];
+        newcubearray[8] = newcubearray[2];
+        newcubearray[2] = v1;
 
-        v1 = cubeArray[1];
-        cubeArray[1] = cubeArray[3];
-        cubeArray[3] = cubeArray[7];
-        cubeArray[7] = cubeArray[5];
-        cubeArray[5] = v1;
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[1];
+        newcubearray[1] = newcubearray[3];
+        newcubearray[3] = newcubearray[7];
+        newcubearray[7] = newcubearray[5];
+        newcubearray[5] = v1;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveUprime()
     {
-        byte v1=cubeArray[9], v2=cubeArray[10], v3=cubeArray[11];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[9], v2=newcubearray[10], v3=newcubearray[11];
         
-        cubeArray[9] = cubeArray[36];
-        cubeArray[10] = cubeArray[37];
-        cubeArray[11] = cubeArray[38];
+        newcubearray[9] = newcubearray[36];
+        newcubearray[10] = newcubearray[37];
+        newcubearray[11] = newcubearray[38];
         
-        cubeArray[36] = cubeArray[27];
-        cubeArray[37] = cubeArray[28];
-        cubeArray[38] = cubeArray[29];
+        newcubearray[36] = newcubearray[27];
+        newcubearray[37] = newcubearray[28];
+        newcubearray[38] = newcubearray[29];
         
-        cubeArray[27] = cubeArray[18];
-        cubeArray[28] = cubeArray[19];
-        cubeArray[29] = cubeArray[20];
+        newcubearray[27] = newcubearray[18];
+        newcubearray[28] = newcubearray[19];
+        newcubearray[29] = newcubearray[20];
         
-        cubeArray[18] = v1;
-        cubeArray[19] = v2;
-        cubeArray[20] = v3;         
+        newcubearray[18] = v1;
+        newcubearray[19] = v2;
+        newcubearray[20] = v3;         
         
         //NEW CODE <-- Rotate face UP
-        v1 = cubeArray[0];
-        cubeArray[0] = cubeArray[2];
-        cubeArray[2] = cubeArray[8];
-        cubeArray[8] = cubeArray[6];
-        cubeArray[6] = v1;
+        v1 = newcubearray[0];
+        newcubearray[0] = newcubearray[2];
+        newcubearray[2] = newcubearray[8];
+        newcubearray[8] = newcubearray[6];
+        newcubearray[6] = v1;
 
-        v1 = cubeArray[1];
-        cubeArray[1] = cubeArray[5];
-        cubeArray[5] = cubeArray[7];
-        cubeArray[7] = cubeArray[3];
-        cubeArray[3] = v1;        
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[1];
+        newcubearray[1] = newcubearray[5];
+        newcubearray[5] = newcubearray[7];
+        newcubearray[7] = newcubearray[3];
+        newcubearray[3] = v1;        
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveD()
     {
-        byte v1=cubeArray[15], v2=cubeArray[16], v3=cubeArray[17];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[15], v2=newcubearray[16], v3=newcubearray[17];
         
-        cubeArray[15] = cubeArray[42];
-        cubeArray[16] = cubeArray[43];
-        cubeArray[17] = cubeArray[44];
+        newcubearray[15] = newcubearray[42];
+        newcubearray[16] = newcubearray[43];
+        newcubearray[17] = newcubearray[44];
         
-        cubeArray[42] = cubeArray[33];
-        cubeArray[43] = cubeArray[34];
-        cubeArray[44] = cubeArray[35];
+        newcubearray[42] = newcubearray[33];
+        newcubearray[43] = newcubearray[34];
+        newcubearray[44] = newcubearray[35];
         
-        cubeArray[33] = cubeArray[24];
-        cubeArray[34] = cubeArray[25];
-        cubeArray[35] = cubeArray[26];
+        newcubearray[33] = newcubearray[24];
+        newcubearray[34] = newcubearray[25];
+        newcubearray[35] = newcubearray[26];
         
-        cubeArray[24] = v1;
-        cubeArray[25] = v2;
-        cubeArray[26] = v3;         
+        newcubearray[24] = v1;
+        newcubearray[25] = v2;
+        newcubearray[26] = v3;         
         
         //NEW CODE <-- Rotate face DOWN
-        v1 = cubeArray[45];
-        cubeArray[45] = cubeArray[51];
-        cubeArray[51] = cubeArray[53];
-        cubeArray[53] = cubeArray[47];
-        cubeArray[47] = v1;
+        v1 = newcubearray[45];
+        newcubearray[45] = newcubearray[51];
+        newcubearray[51] = newcubearray[53];
+        newcubearray[53] = newcubearray[47];
+        newcubearray[47] = v1;
 
-        v1 = cubeArray[46];
-        cubeArray[46] = cubeArray[48];
-        cubeArray[48] = cubeArray[52];
-        cubeArray[52] = cubeArray[50];
-        cubeArray[50] = v1;
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[46];
+        newcubearray[46] = newcubearray[48];
+        newcubearray[48] = newcubearray[52];
+        newcubearray[52] = newcubearray[50];
+        newcubearray[50] = v1;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveDprime()
     {
-        byte v1=cubeArray[15], v2=cubeArray[16], v3=cubeArray[17];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[15], v2=newcubearray[16], v3=newcubearray[17];
         
-        cubeArray[15] = cubeArray[24];
-        cubeArray[16] = cubeArray[25];
-        cubeArray[17] = cubeArray[26];
+        newcubearray[15] = newcubearray[24];
+        newcubearray[16] = newcubearray[25];
+        newcubearray[17] = newcubearray[26];
         
-        cubeArray[24] = cubeArray[33];
-        cubeArray[25] = cubeArray[34];
-        cubeArray[26] = cubeArray[35];
+        newcubearray[24] = newcubearray[33];
+        newcubearray[25] = newcubearray[34];
+        newcubearray[26] = newcubearray[35];
         
-        cubeArray[33] = cubeArray[42];
-        cubeArray[34] = cubeArray[43];
-        cubeArray[35] = cubeArray[44];
+        newcubearray[33] = newcubearray[42];
+        newcubearray[34] = newcubearray[43];
+        newcubearray[35] = newcubearray[44];
         
-        cubeArray[42] = v1;
-        cubeArray[43] = v2;
-        cubeArray[44] = v3;         
+        newcubearray[42] = v1;
+        newcubearray[43] = v2;
+        newcubearray[44] = v3;         
         
         //NEW CODE <-- Rotate face DOWN
-        v1 = cubeArray[45];
-        cubeArray[45] = cubeArray[47];
-        cubeArray[47] = cubeArray[53];
-        cubeArray[53] = cubeArray[51];
-        cubeArray[51] = v1;
+        v1 = newcubearray[45];
+        newcubearray[45] = newcubearray[47];
+        newcubearray[47] = newcubearray[53];
+        newcubearray[53] = newcubearray[51];
+        newcubearray[51] = v1;
 
-        v1 = cubeArray[46];
-        cubeArray[46] = cubeArray[50];
-        cubeArray[50] = cubeArray[52];
-        cubeArray[52] = cubeArray[48];
-        cubeArray[48] = v1;
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[46];
+        newcubearray[46] = newcubearray[50];
+        newcubearray[50] = newcubearray[52];
+        newcubearray[52] = newcubearray[48];
+        newcubearray[48] = v1;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveF()
     {
-        byte v1=cubeArray[6], v2=cubeArray[7], v3=cubeArray[8];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[6], v2=newcubearray[7], v3=newcubearray[8];
         
-        cubeArray[6] = cubeArray[17];
-        cubeArray[7] = cubeArray[14];
-        cubeArray[8] = cubeArray[11];
+        newcubearray[6] = newcubearray[17];
+        newcubearray[7] = newcubearray[14];
+        newcubearray[8] = newcubearray[11];
         
-        cubeArray[17] = cubeArray[47];
-        cubeArray[14] = cubeArray[46];
-        cubeArray[11] = cubeArray[45];
+        newcubearray[17] = newcubearray[47];
+        newcubearray[14] = newcubearray[46];
+        newcubearray[11] = newcubearray[45];
         
-        cubeArray[47] = cubeArray[27];
-        cubeArray[46] = cubeArray[30];
-        cubeArray[45] = cubeArray[33];
+        newcubearray[47] = newcubearray[27];
+        newcubearray[46] = newcubearray[30];
+        newcubearray[45] = newcubearray[33];
         
-        cubeArray[27] = v1;
-        cubeArray[30] = v2;
-        cubeArray[33] = v3;         
+        newcubearray[27] = v1;
+        newcubearray[30] = v2;
+        newcubearray[33] = v3;         
         
         //NEW CODE <-- Rotate face Front
-        v1 = cubeArray[18];
-        cubeArray[18] = cubeArray[24];
-        cubeArray[24] = cubeArray[26];
-        cubeArray[26] = cubeArray[20];
-        cubeArray[20] = v1;
+        v1 = newcubearray[18];
+        newcubearray[18] = newcubearray[24];
+        newcubearray[24] = newcubearray[26];
+        newcubearray[26] = newcubearray[20];
+        newcubearray[20] = v1;
 
-        v1 = cubeArray[19];
-        cubeArray[19] = cubeArray[21];
-        cubeArray[21] = cubeArray[25];
-        cubeArray[25] = cubeArray[23];
-        cubeArray[23] = v1;
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[19];
+        newcubearray[19] = newcubearray[21];
+        newcubearray[21] = newcubearray[25];
+        newcubearray[25] = newcubearray[23];
+        newcubearray[23] = v1;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveFprime()
     {
-        byte v1=cubeArray[6], v2=cubeArray[7], v3=cubeArray[8];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[6], v2=newcubearray[7], v3=newcubearray[8];
         
-        cubeArray[6] = cubeArray[27];
-        cubeArray[7] = cubeArray[30];
-        cubeArray[8] = cubeArray[33];
+        newcubearray[6] = newcubearray[27];
+        newcubearray[7] = newcubearray[30];
+        newcubearray[8] = newcubearray[33];
         
-        cubeArray[27] = cubeArray[47];
-        cubeArray[30] = cubeArray[46];
-        cubeArray[33] = cubeArray[45];
+        newcubearray[27] = newcubearray[47];
+        newcubearray[30] = newcubearray[46];
+        newcubearray[33] = newcubearray[45];
         
-        cubeArray[47] = cubeArray[17];
-        cubeArray[46] = cubeArray[14];
-        cubeArray[45] = cubeArray[11];
+        newcubearray[47] = newcubearray[17];
+        newcubearray[46] = newcubearray[14];
+        newcubearray[45] = newcubearray[11];
         
-        cubeArray[17] = v1;
-        cubeArray[14] = v2;
-        cubeArray[11] = v3;         
+        newcubearray[17] = v1;
+        newcubearray[14] = v2;
+        newcubearray[11] = v3;         
         
         //NEW CODE <-- Rotate face Front
-        v1 = cubeArray[18];
-        cubeArray[18] = cubeArray[20];
-        cubeArray[20] = cubeArray[26];
-        cubeArray[26] = cubeArray[24];
-        cubeArray[24] = v1;
+        v1 = newcubearray[18];
+        newcubearray[18] = newcubearray[20];
+        newcubearray[20] = newcubearray[26];
+        newcubearray[26] = newcubearray[24];
+        newcubearray[24] = v1;
 
-        v1 = cubeArray[19];
-        cubeArray[19] = cubeArray[23];
-        cubeArray[23] = cubeArray[25];
-        cubeArray[25] = cubeArray[21];
-        cubeArray[21] = v1;
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[19];
+        newcubearray[19] = newcubearray[23];
+        newcubearray[23] = newcubearray[25];
+        newcubearray[25] = newcubearray[21];
+        newcubearray[21] = v1;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveB()
     {
-        byte v1=cubeArray[0], v2=cubeArray[1], v3=cubeArray[2];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[0], v2=newcubearray[1], v3=newcubearray[2];
         
-        cubeArray[0] = cubeArray[29];
-        cubeArray[1] = cubeArray[32];
-        cubeArray[2] = cubeArray[35];
+        newcubearray[0] = newcubearray[29];
+        newcubearray[1] = newcubearray[32];
+        newcubearray[2] = newcubearray[35];
         
-        cubeArray[29] = cubeArray[53];
-        cubeArray[32] = cubeArray[52];
-        cubeArray[35] = cubeArray[51];
+        newcubearray[29] = newcubearray[53];
+        newcubearray[32] = newcubearray[52];
+        newcubearray[35] = newcubearray[51];
         
-        cubeArray[53] = cubeArray[15];
-        cubeArray[52] = cubeArray[12];
-        cubeArray[51] = cubeArray[9];
+        newcubearray[53] = newcubearray[15];
+        newcubearray[52] = newcubearray[12];
+        newcubearray[51] = newcubearray[9];
         
-        cubeArray[15] = v1;
-        cubeArray[12] = v2;
-        cubeArray[9] = v3;         
+        newcubearray[15] = v1;
+        newcubearray[12] = v2;
+        newcubearray[9] = v3;         
         
         //NEW CODE <-- Rotate face Back
-        v1 = cubeArray[36];
-        cubeArray[36] = cubeArray[42];
-        cubeArray[42] = cubeArray[44];
-        cubeArray[44] = cubeArray[38];
-        cubeArray[38] = v1;
+        v1 = newcubearray[36];
+        newcubearray[36] = newcubearray[42];
+        newcubearray[42] = newcubearray[44];
+        newcubearray[44] = newcubearray[38];
+        newcubearray[38] = v1;
 
-        v1 = cubeArray[37];
-        cubeArray[37] = cubeArray[39];
-        cubeArray[39] = cubeArray[43];
-        cubeArray[43] = cubeArray[41];
-        cubeArray[41] = v1;
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[37];
+        newcubearray[37] = newcubearray[39];
+        newcubearray[39] = newcubearray[43];
+        newcubearray[43] = newcubearray[41];
+        newcubearray[41] = v1;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveBprime()
     {
-        byte v1=cubeArray[0], v2=cubeArray[1], v3=cubeArray[2];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[0], v2=newcubearray[1], v3=newcubearray[2];
         
-        cubeArray[0] = cubeArray[15];
-        cubeArray[1] = cubeArray[12];
-        cubeArray[2] = cubeArray[9];
+        newcubearray[0] = newcubearray[15];
+        newcubearray[1] = newcubearray[12];
+        newcubearray[2] = newcubearray[9];
         
-        cubeArray[15] = cubeArray[53];
-        cubeArray[12] = cubeArray[52];
-        cubeArray[9] = cubeArray[51];
+        newcubearray[15] = newcubearray[53];
+        newcubearray[12] = newcubearray[52];
+        newcubearray[9] = newcubearray[51];
         
-        cubeArray[53] = cubeArray[29];
-        cubeArray[52] = cubeArray[32];
-        cubeArray[51] = cubeArray[35];
+        newcubearray[53] = newcubearray[29];
+        newcubearray[52] = newcubearray[32];
+        newcubearray[51] = newcubearray[35];
         
-        cubeArray[29] = v1;
-        cubeArray[32] = v2;
-        cubeArray[35] = v3;         
+        newcubearray[29] = v1;
+        newcubearray[32] = v2;
+        newcubearray[35] = v3;         
         
         //NEW CODE <-- Rotate face Back
-        v1 = cubeArray[36];
-        cubeArray[36] = cubeArray[38];
-        cubeArray[38] = cubeArray[44];
-        cubeArray[44] = cubeArray[42];
-        cubeArray[42] = v1;
+        v1 = newcubearray[36];
+        newcubearray[36] = newcubearray[38];
+        newcubearray[38] = newcubearray[44];
+        newcubearray[44] = newcubearray[42];
+        newcubearray[42] = v1;
 
-        v1 = cubeArray[37];
-        cubeArray[37] = cubeArray[41];
-        cubeArray[41] = cubeArray[43];
-        cubeArray[43] = cubeArray[39];
-        cubeArray[39] = v1;
-        return new RubiksCube(cubeArray);
+        v1 = newcubearray[37];
+        newcubearray[37] = newcubearray[41];
+        newcubearray[41] = newcubearray[43];
+        newcubearray[43] = newcubearray[39];
+        newcubearray[39] = v1;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveM()
     {
-        byte v1=cubeArray[1], v2=cubeArray[4], v3=cubeArray[7];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[1], v2=newcubearray[4], v3=newcubearray[7];
         
-        cubeArray[1] = cubeArray[43];
-        cubeArray[4] = cubeArray[40];
-        cubeArray[7] = cubeArray[37];
+        newcubearray[1] = newcubearray[43];
+        newcubearray[4] = newcubearray[40];
+        newcubearray[7] = newcubearray[37];
         
-        cubeArray[43] = cubeArray[46];
-        cubeArray[40] = cubeArray[49];
-        cubeArray[37] = cubeArray[52];
+        newcubearray[43] = newcubearray[46];
+        newcubearray[40] = newcubearray[49];
+        newcubearray[37] = newcubearray[52];
         
-        cubeArray[46] = cubeArray[19];
-        cubeArray[49] = cubeArray[22];
-        cubeArray[52] = cubeArray[25];
+        newcubearray[46] = newcubearray[19];
+        newcubearray[49] = newcubearray[22];
+        newcubearray[52] = newcubearray[25];
         
-        cubeArray[19] = v1;
-        cubeArray[22] = v2;
-        cubeArray[25] = v3;         
-        return new RubiksCube(cubeArray);
+        newcubearray[19] = v1;
+        newcubearray[22] = v2;
+        newcubearray[25] = v3;         
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveMprime()
     {
-        byte v1=cubeArray[1], v2=cubeArray[4], v3=cubeArray[7];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[1], v2=newcubearray[4], v3=newcubearray[7];
         
-        cubeArray[1] = cubeArray[19];
-        cubeArray[4] = cubeArray[22];
-        cubeArray[7] = cubeArray[25];
+        newcubearray[1] = newcubearray[19];
+        newcubearray[4] = newcubearray[22];
+        newcubearray[7] = newcubearray[25];
         
-        cubeArray[19] = cubeArray[46];
-        cubeArray[22] = cubeArray[49];
-        cubeArray[25] = cubeArray[52];
+        newcubearray[19] = newcubearray[46];
+        newcubearray[22] = newcubearray[49];
+        newcubearray[25] = newcubearray[52];
         
-        cubeArray[46] = cubeArray[43];
-        cubeArray[49] = cubeArray[40];
-        cubeArray[52] = cubeArray[37];
+        newcubearray[46] = newcubearray[43];
+        newcubearray[49] = newcubearray[40];
+        newcubearray[52] = newcubearray[37];
         
-        cubeArray[43] = v1;
-        cubeArray[40] = v2;
-        cubeArray[37] = v3; 
-        return new RubiksCube(cubeArray);
+        newcubearray[43] = v1;
+        newcubearray[40] = v2;
+        newcubearray[37] = v3; 
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveE()
     {
-        byte v1=cubeArray[12], v2=cubeArray[13], v3=cubeArray[14];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[12], v2=newcubearray[13], v3=newcubearray[14];
         
-        cubeArray[12] = cubeArray[39];
-        cubeArray[13] = cubeArray[40];
-        cubeArray[14] = cubeArray[41];
+        newcubearray[12] = newcubearray[39];
+        newcubearray[13] = newcubearray[40];
+        newcubearray[14] = newcubearray[41];
         
-        cubeArray[39] = cubeArray[30];
-        cubeArray[40] = cubeArray[31];
-        cubeArray[41] = cubeArray[32];
+        newcubearray[39] = newcubearray[30];
+        newcubearray[40] = newcubearray[31];
+        newcubearray[41] = newcubearray[32];
         
-        cubeArray[30] = cubeArray[21];
-        cubeArray[31] = cubeArray[22];
-        cubeArray[32] = cubeArray[23];
+        newcubearray[30] = newcubearray[21];
+        newcubearray[31] = newcubearray[22];
+        newcubearray[32] = newcubearray[23];
         
-        cubeArray[21] = v1;
-        cubeArray[22] = v2;
-        cubeArray[23] = v3; 
-        return new RubiksCube(cubeArray);
+        newcubearray[21] = v1;
+        newcubearray[22] = v2;
+        newcubearray[23] = v3; 
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveEprime()
     {
-        byte v1=cubeArray[12], v2=cubeArray[13], v3=cubeArray[14];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[12], v2=newcubearray[13], v3=newcubearray[14];
         
-        cubeArray[12] = cubeArray[21];
-        cubeArray[13] = cubeArray[22];
-        cubeArray[14] = cubeArray[23];
+        newcubearray[12] = newcubearray[21];
+        newcubearray[13] = newcubearray[22];
+        newcubearray[14] = newcubearray[23];
         
-        cubeArray[21] = cubeArray[30];
-        cubeArray[22] = cubeArray[31];
-        cubeArray[23] = cubeArray[32];
+        newcubearray[21] = newcubearray[30];
+        newcubearray[22] = newcubearray[31];
+        newcubearray[23] = newcubearray[32];
         
-        cubeArray[30] = cubeArray[39];
-        cubeArray[31] = cubeArray[40];
-        cubeArray[32] = cubeArray[41];
+        newcubearray[30] = newcubearray[39];
+        newcubearray[31] = newcubearray[40];
+        newcubearray[32] = newcubearray[41];
         
-        cubeArray[39] = v1;
-        cubeArray[40] = v2;
-        cubeArray[41] = v3;
-        return new RubiksCube(cubeArray);
+        newcubearray[39] = v1;
+        newcubearray[40] = v2;
+        newcubearray[41] = v3;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveS()
     {
-        byte v1=cubeArray[3], v2=cubeArray[4], v3=cubeArray[5];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[3], v2=newcubearray[4], v3=newcubearray[5];
         
-        cubeArray[3] = cubeArray[16];
-        cubeArray[4] = cubeArray[13];
-        cubeArray[5] = cubeArray[10];
+        newcubearray[3] = newcubearray[16];
+        newcubearray[4] = newcubearray[13];
+        newcubearray[5] = newcubearray[10];
         
-        cubeArray[16] = cubeArray[50];
-        cubeArray[13] = cubeArray[49];
-        cubeArray[10] = cubeArray[48];
+        newcubearray[16] = newcubearray[50];
+        newcubearray[13] = newcubearray[49];
+        newcubearray[10] = newcubearray[48];
         
-        cubeArray[50] = cubeArray[28];
-        cubeArray[49] = cubeArray[31];
-        cubeArray[48] = cubeArray[34];
+        newcubearray[50] = newcubearray[28];
+        newcubearray[49] = newcubearray[31];
+        newcubearray[48] = newcubearray[34];
         
-        cubeArray[28] = v1;
-        cubeArray[31] = v2;
-        cubeArray[34] = v3;
-        return new RubiksCube(cubeArray);
+        newcubearray[28] = v1;
+        newcubearray[31] = v2;
+        newcubearray[34] = v3;
+        return new RubiksCube(newcubearray);
     }
     
     public RubiksCube moveSprime()
     {
-        byte v1=cubeArray[3], v2=cubeArray[4], v3=cubeArray[5];
+        byte []newcubearray = this.getCubeArray().clone(); 
+        byte v1=newcubearray[3], v2=newcubearray[4], v3=newcubearray[5];
         
-        cubeArray[3] = cubeArray[28];
-        cubeArray[4] = cubeArray[31];
-        cubeArray[5] = cubeArray[34];
+        newcubearray[3] = newcubearray[28];
+        newcubearray[4] = newcubearray[31];
+        newcubearray[5] = newcubearray[34];
         
-        cubeArray[28] = cubeArray[50];
-        cubeArray[31] = cubeArray[49];
-        cubeArray[34] = cubeArray[48];
+        newcubearray[28] = newcubearray[50];
+        newcubearray[31] = newcubearray[49];
+        newcubearray[34] = newcubearray[48];
         
-        cubeArray[50] = cubeArray[16];
-        cubeArray[49] = cubeArray[13];
-        cubeArray[48] = cubeArray[10];
+        newcubearray[50] = newcubearray[16];
+        newcubearray[49] = newcubearray[13];
+        newcubearray[48] = newcubearray[10];
         
-        cubeArray[16] = v1;
-        cubeArray[13] = v2;
-        cubeArray[10] = v3;
-        return new RubiksCube(cubeArray);
+        newcubearray[16] = v1;
+        newcubearray[13] = v2;
+        newcubearray[10] = v3;
+        return new RubiksCube(newcubearray);
+    } 
+ 
+    public boolean isOrdered()
+    {
+        boolean resp = true;
+        for (int i = 0; i < this.getCubeArray().length; i++)
+        {
+            if( this.getCubeArray()[i] != (i+1) )
+                return false;
+        }
+        return resp;
     }
     
 }

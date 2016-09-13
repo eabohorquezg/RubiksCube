@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/AnDresLoPz/Google%20Drive/Universidad%20Nacional/9%20Noveno%20Semestre/Sistemas%20Inteligentes/RubiksCube/RubikCube/src/RubiksCube.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/RubikCube/src/Node.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/RubikCube/src/Link.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/RubikCube/src/RubiksCube.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/RubikCube/src/Edge.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/RubikCube/src/Graph.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/RubikCube/src/Main.java</file>
         </group>
     </open-files>
 </project-private>

@@ -14,18 +14,25 @@ import java.util.Enumeration;
  */
 public class Main {  
     
-    public static void main(String []args){
-        
-       long NUM_LEVELS = 2;//15;
-       long NUM_MOV = 18;
-       long NUM_NODES = (long)((Math.pow(NUM_MOV, NUM_LEVELS+1)-1)/(NUM_MOV-1));
-       System.out.println("nodos del grafo : "+NUM_NODES);
+    //condiciones iniciales (restricciones)
+    private static final long NUM_LEVELS = 3;//15;
+    private static final long NUM_MOV = 18;
+    private static final long NUM_NODES = (long)((Math.pow(NUM_MOV, NUM_LEVELS)-1)/(NUM_MOV-1));
+    private static final long TOTAL = (long)((Math.pow(NUM_MOV, NUM_LEVELS+1)-1)/(NUM_MOV-1));
+    
+    public static void main(String []args)
+    {    
+       System.out.println("nodos del grafo : "+TOTAL);
        Graph g = new Graph();
-       g.makeNode(1L, new RubiksCube());//se crea el nodo raiz
+       //hacer metodo para desarmar cubo
+       g.makeNode(1L, new RubiksCube().moveM().moveM().moveM());//se crea el nodo raiz con cubo desarmado 
        g.createGraph(NUM_NODES);
-       //g.printGraph();
-       System.out.println("termine");
-        
+//       g.printGraph();
+       g.dfs(g.getNode(1L)); 
+       //g.bfs(g.getNode(1L)); 
+       //g.dfsRecursive(g.getNode(1L)); 
+       System.out.println("termine");  
+       
     }
     
 }

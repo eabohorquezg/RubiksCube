@@ -15,6 +15,10 @@ public class Test {
      public static void main(String []args){
        
         RubiksCube cube = new RubiksCube();
+        cube.moveL().printArrayCube();
+        System.out.println("");
+        cube.printArrayCube();
+        System.out.println("--------------");
         cube.printArrayCube();
         cube.moveL();
         System.out.println("");
@@ -33,6 +37,14 @@ public class Test {
         g.makelink(1L, g.makeNode(2L,rc1), 0);
         g.makelink(1L, 3L, 1);
         g.makelink(2L, 3L, 1);
+        System.out.println("EDWIN");
+        g.getNode(1L).getCube().printArrayCube();
+        System.out.println("EDWIN");
+        RubiksCube ed = g.getNode(1L).getCube();
+        ed.moveL().printArrayCube();
+        System.out.println("EDWIN");
+        g.getNode(1L).getCube().printArrayCube();
+        System.out.println("EDWIN");
         System.out.println("Grafo: ");
         g.printGraph();
         System.out.println("");
