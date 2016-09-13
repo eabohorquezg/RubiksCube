@@ -27,15 +27,16 @@ public class Main {
        System.out.println("Time "+ new GregorianCalendar().getTime()); 
        Graph g = new Graph();
        //hacer metodo para desarmar cubo
-       g.makeNode(1L, new RubiksCube().RandomCube(5));//se crea el nodo raiz con cubo desarmado 
-       g.createGraph(NUM_NODES);
+       //g.makeNode(1L, new RubiksCube().RandomCube(5));//se crea el nodo raiz con cubo desarmado 
+       //g.createGraph(NUM_NODES);
        System.out.println("nodos del grafo : "+TOTAL);
        //g.printGraph();
        System.out.println("Inicio Busqueda");
        System.out.println("Time "+ new GregorianCalendar().getTime());
-       g.dfs(g.getNode(1L)); 
+       //g.dfs(g.getNode(1L)); 
        //g.bfs(g.getNode(1L)); 
        //g.dfsRecursive(g.getNode(1L));
+       g.Astar(new RubiksCube().RandomCube(5));
        System.out.println("termine");
        System.out.println("Time "+ new GregorianCalendar().getTime()); 
        

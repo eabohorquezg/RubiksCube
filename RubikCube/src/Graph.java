@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -220,11 +221,77 @@ public class Graph {
             }
         }
     }
+    //------------------> Astar Methods
+    public void Astar(RubiksCube root)
+    {          
+        Hashtable<Long,RubiksCube> dicAStar = new Hashtable<>();
+        PriorityQueue<pairPosition> cola = new PriorityQueue<>();
+        
+        final RubiksCube Original = new RubiksCube();
+        Long position = 1L;
+        int diference = compareRubikscube(Original, root);
+        System.out.println("Pos Inicial: "+position+" Diferencia ini:"+diference);
+        dicAStar.put(position, root);
+        
+        Original.printArrayCube();
+        root.printArrayCube();
+        
+        while(diference>0){
+            if (0==diference)
+            System.out.println("solution");
+            else{
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveL()),positionNode(position, 0)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveLprime()),positionNode(position, 1)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveB()),positionNode(position, 2)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveBprime()),positionNode(position, 3)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveD()),positionNode(position, 4)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveDprime()),positionNode(position, 5)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveE()),positionNode(position, 6)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveEprime()),positionNode(position, 7)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveF()),positionNode(position, 8)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveFprime()),positionNode(position, 9)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveM()),positionNode(position, 10)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveMprime()),positionNode(position,11)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveR()),positionNode(position, 12)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveRprime()),positionNode(position, 13)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveS()),positionNode(position, 14)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveSprime()),positionNode(position, 15)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveU()),positionNode(position, 16)));
+                cola.add(new pairPosition(compareRubikscube(Original, root.moveUprime()),positionNode(position, 17)));           
+                //System.out.println("-- "+cola.remove());
+                //System.out.println("-- "+cola.remove());
+                pairPosition tmp = cola.remove();
+                
+                if (cola.isEmpty()){
+                    System.out.println("se desocupo");
+                    System.exit(0);
+                }
+                position = tmp.getPosition();
+                diference = tmp.getDiferences();
+                System.out.println("Diference"+ diference +"pos: "+position);
+            }        
+        }
+        
+    }
     
-    public void Astar(Node root)
-    {   
-        //VACIO
-
+    public Long positionNode(Long node, int move){
+        //System.out.println("pos: "+((18*(node-1))+2+move)+" - "+move);
+        return ((18*(node-1))+2+move);
+    }
+    
+    public int compareRubikscube(RubiksCube original, RubiksCube busqueda){
+        byte[] arroriginal = original.getCubeArray();
+        byte[] arrbusqueda = busqueda.getCubeArray();
+        
+        int diferences = 0;
+        int equals = 0;
+        for (int i = 0; i < arroriginal.length; i++) {
+            if (arroriginal[i] != arrbusqueda[i])
+                diferences++;
+            else equals++;
+        }
+        //System.out.println("dif: "+diferences+" - "+equals);
+        return diferences;
     }
     
 }

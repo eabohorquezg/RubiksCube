@@ -53,7 +53,7 @@ public class RubiksCube
             
         }       
         System.out.println(pathNewCube);  
-        cube.printArrayCube();
+        //cube.printArrayCube();
         return cube;
     }
     
