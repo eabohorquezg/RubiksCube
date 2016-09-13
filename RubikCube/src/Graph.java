@@ -125,8 +125,12 @@ public class Graph {
         queue.add(root);
         while( !queue.isEmpty() )
         {
-            Node r = (Node)queue.remove(); 
-            System.out.print(r.getId()+" ");
+            Node r = (Node)queue.remove();
+            if( r.getCube().isOrdered() ){
+                path(r.getId());
+                break;
+            }
+            //System.out.print(r.getId()+" ");
             for( Link n: r.getLinks() )
             {
                 Node child = getNode(n.getArrivalnode());
@@ -151,6 +155,46 @@ public class Graph {
         }
     }
     
+    public void path(long numberNode){
+        String pathNode = Long.toString(numberNode)+" ";
+        while (numberNode>1){
+            long module = numberNode%18;
+            long tmp = 0;
+            if (module == 0) tmp=16;
+            else if (module == 1) tmp=17;
+            else tmp = module-2;
+            
+            long tmpvalue = ((numberNode -2 -tmp)/18)+1;
+            numberNode = tmpvalue;
+            pathNode += nameMove((int)tmp)+Long.toString(tmpvalue)+" ";           
+        }
+        System.out.println(pathNode);
+    }
+    
+    public String nameMove(int numberMove){
+        switch (numberMove){
+                case 0: return "L ";
+                case 1: return "LP ";
+                case 2: return "B "; 
+                case 3: return "BP ";
+                case 4: return "D ";
+                case 5: return "DP ";
+                case 6: return "E ";
+                case 7: return "EP ";
+                case 8: return "F ";
+                case 9: return "FP ";
+                case 10: return "M ";
+                case 11: return "MP ";
+                case 12: return "R ";
+                case 13: return "RP "; 
+                case 14: return "S "; 
+                case 15: return "SP ";
+                case 16: return "U "; 
+                case 17: return "UP ";
+            }
+        return null;
+    }
+    
     public void dfs(Node root)
     {   
         Stack stack = new Stack(); 
@@ -161,7 +205,8 @@ public class Graph {
             Node r = (Node)stack.pop();    
             //System.out.print(r.getId()+" ");
             if( r.getCube().isOrdered() ){
-                System.out.println("lo encontre en "+r.getId());
+                path(r.getId());
+                //System.out.println("lo encontre en "+r.getId());
                 break;
             }
             for( Link n: r.getLinks() )
@@ -174,6 +219,12 @@ public class Graph {
                 }
             }
         }
+    }
+    
+    public void Astar(Node root)
+    {   
+        //VACIO
+
     }
     
 }

@@ -1,7 +1,9 @@
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,23 +17,27 @@ import java.util.Enumeration;
 public class Main {  
     
     //condiciones iniciales (restricciones)
-    private static final long NUM_LEVELS = 3;//15;
+    private static final long NUM_LEVELS = 5;//15;
     private static final long NUM_MOV = 18;
     private static final long NUM_NODES = (long)((Math.pow(NUM_MOV, NUM_LEVELS)-1)/(NUM_MOV-1));
     private static final long TOTAL = (long)((Math.pow(NUM_MOV, NUM_LEVELS+1)-1)/(NUM_MOV-1));
     
     public static void main(String []args)
     {    
-       System.out.println("nodos del grafo : "+TOTAL);
+       System.out.println("Time "+ new GregorianCalendar().getTime()); 
        Graph g = new Graph();
        //hacer metodo para desarmar cubo
-       g.makeNode(1L, new RubiksCube().moveM().moveM().moveM());//se crea el nodo raiz con cubo desarmado 
+       g.makeNode(1L, new RubiksCube().RandomCube(5));//se crea el nodo raiz con cubo desarmado 
        g.createGraph(NUM_NODES);
-//       g.printGraph();
+       System.out.println("nodos del grafo : "+TOTAL);
+       //g.printGraph();
+       System.out.println("Inicio Busqueda");
+       System.out.println("Time "+ new GregorianCalendar().getTime());
        g.dfs(g.getNode(1L)); 
        //g.bfs(g.getNode(1L)); 
-       //g.dfsRecursive(g.getNode(1L)); 
-       System.out.println("termine");  
+       //g.dfsRecursive(g.getNode(1L));
+       System.out.println("termine");
+       System.out.println("Time "+ new GregorianCalendar().getTime()); 
        
     }
     

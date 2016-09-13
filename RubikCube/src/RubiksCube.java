@@ -24,6 +24,39 @@ public class RubiksCube
         }
     }
     
+    
+    public RubiksCube RandomCube(int level){
+        String pathNewCube = "";
+        RubiksCube cube = new RubiksCube();
+        for (int i = 0; i < level; i++) {
+            int indexrandom = (int)(Math.random()*18);
+            switch (indexrandom){
+                case 0: cube = cube.moveL(); pathNewCube+="L "; break;
+                case 1: cube = cube.moveLprime(); pathNewCube+="LP "; break;
+                case 2: cube = cube.moveB(); pathNewCube+="B "; break;
+                case 3: cube = cube.moveBprime(); pathNewCube+="BP "; break;
+                case 4: cube = cube.moveD(); pathNewCube+="D "; break;
+                case 5: cube = cube.moveDprime(); pathNewCube+="DP "; break;
+                case 6: cube = cube.moveE(); pathNewCube+="E "; break;
+                case 7: cube = cube.moveEprime(); pathNewCube+="EP "; break;
+                case 8: cube = cube.moveF(); pathNewCube+="F "; break;
+                case 9: cube = cube.moveFprime(); pathNewCube+="FP "; break;
+                case 10: cube = cube.moveM(); pathNewCube+="M "; break;
+                case 11: cube = cube.moveMprime(); pathNewCube+="MP "; break;
+                case 12: cube = cube.moveR(); pathNewCube+="R "; break;
+                case 13: cube = cube.moveRprime(); pathNewCube+="RP "; break;
+                case 14: cube = cube.moveS(); pathNewCube+="S "; break;
+                case 15: cube = cube.moveSprime(); pathNewCube+="SP "; break;
+                case 16: cube = cube.moveU(); pathNewCube+="U "; break;
+                case 17: cube = cube.moveUprime(); pathNewCube+="UP "; break;
+            }
+            
+        }       
+        System.out.println(pathNewCube);  
+        cube.printArrayCube();
+        return cube;
+    }
+    
     public RubiksCube( byte[] cubeArray ) 
     {
         this.cubeArray = cubeArray;
@@ -39,6 +72,7 @@ public class RubiksCube
         for (int i = 0; i < cubeArray.length; i++) {
             System.out.print(cubeArray[i]+" ");
         }
+        System.out.println("");
     }
     
     public RubiksCube moveL() 
