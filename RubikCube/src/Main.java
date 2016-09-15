@@ -17,8 +17,8 @@ import java.util.GregorianCalendar;
 public class Main {  
     
     //condiciones iniciales (restricciones)
-    private static final long NUM_LEVELS = 5;//15;
-    private static final long NUM_MOV = 18;
+    private static final int NUM_LEVELS = 9;//15;
+    private static final int NUM_MOV = 18;
     private static final long NUM_NODES = (long)((Math.pow(NUM_MOV, NUM_LEVELS)-1)/(NUM_MOV-1));
     private static final long TOTAL = (long)((Math.pow(NUM_MOV, NUM_LEVELS+1)-1)/(NUM_MOV-1));
         
@@ -26,10 +26,11 @@ public class Main {
     {
       System.out.println("Iniciio: "+ new GregorianCalendar().getTime());  
       System.out.println("--------------------------------------");
-      Graphs g = new Graphs();
+      Graph_A g = new Graph_A();
       System.out.println("nodos del grafo : "+TOTAL);
-      g.bfs(1L, new RubiksCube().RandomCube(NUM_LEVELS), TOTAL);
-      
+      //g.bfs(1L, new ToolsCube_A().RandomCube(NUM_LEVELS), TOTAL);
+      g.dfs(1L, new ToolsCube_A().RandomCube(NUM_LEVELS), TOTAL,NUM_LEVELS);
+      //g.dfs(1L, new ToolsCube_A().moveL(new ToolsCube_A().originalCube()), TOTAL,NUM_LEVELS);
       System.out.println("Final: "+ new GregorianCalendar().getTime());
       //g.bfs(1L, new RubiksCube().moveL().moveL(), TOTAL);
     }
